@@ -1,0 +1,9 @@
+- name: ensure latest python is present
+  yum:
+    name:
+      - python3
+      - python3-setuptools
+      - python3-devel
+      - python3-pip
+    state: latest
+  become: yes

@@ -1,0 +1,6 @@
+- name: ensure ntpd is started and enabled
+  service:
+    name: ntpd
+    state: started
+    enabled: yes
+  become: yes

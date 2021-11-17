@@ -1,0 +1,13 @@
+- name: ensure boto module is present
+  pip:
+    name: boto
+    state: latest
+    executable: pip3
+    extra_args: --upgrade --user
+  become: yes
+- name: ensure awscli module is present
+  pip:
+    name: awscli
+    state: latest
+    executable: pip3
+    extra_args: --upgrade --user

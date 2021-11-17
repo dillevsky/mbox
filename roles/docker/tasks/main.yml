@@ -1,0 +1,44 @@
+- name: ensure docker prerequisites are present
+  yum:
+    name:
+      - device-mapper-persistent-data
+      - lvm2
+    state: latest
+  become: yes
+- name: get gpg key for docker repo
+  rpm_key:
+    key: https://download.docker.com/linux/centos/gpg
+    state: present
+  become: yes
+- name: add official yum repository with docker packages
+  yum_repository:
+    baseurl: https://download.docker.com/linux/centos/7/$basearch/stable
+    description: Docker CE Stable - Debuginfo $basearch
+    enabled: no
+    gpgcheck: yes
+    gpgkey: https://download.docker.com/linux/centos/gpg
+    name: docker
+  become: yes
+- name: install latest docker
+  yum:
+    name: docker-ce
+    enablerepo: docker
+    state: latest
+  become: yes
+- name: ensure docker group is present
+  group:
+    name: docker
+    state: present
+  become: yes
+- name: enable docker service
+  service:
+    name: docker
+    state: started
+    enabled: yes
+  become: yes
+- name: permit user to use docker
+  user:
+    name: vagrant
+    groups: docker
+    append: yes
+  become: yes

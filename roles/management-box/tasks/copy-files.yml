@@ -1,0 +1,18 @@
+- name: copy .bash_profile
+  copy:
+    src: user-bash_profile
+    dest: ~/.bash_profile
+- name: ensure ~/.ssh exists
+  file:
+    path: ~/.ssh
+    state: directory
+    mode: 0700
+- name: copy .ssh/config
+  copy:
+    src: user-ssh.config
+    dest: ~/.ssh/config
+    mode: 0600
+- name: copy .vimrc
+  copy:
+    src: user-vimrc
+    dest: ~/.vimrc

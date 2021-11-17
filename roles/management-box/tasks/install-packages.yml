@@ -1,0 +1,58 @@
+- name: ensure latest git is installed
+  yum:
+    name: git
+    state: latest
+  become: yes
+- name: ensure latest cloc is installed
+  yum:
+    name: cloc
+    state: latest
+  become: yes
+- name: ensure latest jq is installed
+  yum:
+    name: jq
+    state: latest
+  become: yes
+- name: ensure latest net-tools package is installed
+  yum:
+    name: net-tools
+    state: latest
+  become: yes
+- name: ensure latest bind-utils package is installed
+  yum:
+    name: bind-utils
+    state: latest
+  become: yes
+- name: ensure latest ntp is installed
+  yum:
+    name: ntp
+    state: latest
+  notify:
+  - restart ntpd
+  become: yes
+- name: ensure latest vim is installed
+  yum:
+    name:
+      - vim-common
+      - vim-enhanced
+    state: latest
+  become: yes
+- name: ensure latest zip and unzip are installed
+  yum:
+    name:
+      - zip
+      - unzip
+    state: latest
+  become: yes
+- name: ensure latest java 8 jdk and maven are installed
+  yum:
+    name:
+      - java-1.8.0-openjdk
+      - maven
+    state: latest
+  become: yes
+- name: ensure latest nodejs is installed
+  yum:
+    name: nodejs
+    state: latest
+  become: yes

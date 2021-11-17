@@ -1,0 +1,11 @@
+- name: ensure latest EPEL repo is installed
+  yum_repository:
+    baseurl: http://download.fedoraproject.org/pub/epel/7/$basearch
+    description: Extra Packages for Enterprise Linux 7 - $basearch
+    enabled: yes
+    failovermethod: priority
+    gpgcheck: yes
+    gpgkey: https://ftp.icm.edu.pl/pub/Linux/fedora/linux/epel/RPM-GPG-KEY-EPEL-7
+    name: epel
+    metalink: https://mirrors.fedoraproject.org/metalink?repo=epel-7&arch=$basearch
+  become: yes
